@@ -42,6 +42,7 @@ ostream& operator<< (ostream& os, const Complex<U>& cplx){
 		os << " - " << (U)(-1 * cplx.im);
 	}
 	os << "i)" << endl;
+	return os;
 }
 
 void solveQuadratic(Complex<double>& x1, Complex<double>& x2, int a, int b, int c){

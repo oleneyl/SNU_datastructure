@@ -159,6 +159,7 @@ ostream& operator<<(ostream& os, const NaryBigNum& arg){
 		os << arg.number[i];
 	}
 	os << "(" << arg.base << ")";
+	return os;
 }
 
 // For convenient calculation
