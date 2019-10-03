@@ -12,7 +12,11 @@ protected:
 public:
 	// TODO: Declare and define member functions following the instruction
 	// You can add other member functions if you need
-
+	Figure();
+	virtual ~Figure();
+	friend ostream& operator<<(ostream&, const Figure&);
+	virtual void shift(int, int) = 0;
+	virtual ostream& print(ostream&) const = 0; 
 };
 
 class Rectangle : public Figure {
