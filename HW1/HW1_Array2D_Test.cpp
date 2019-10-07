@@ -21,9 +21,15 @@ Array2D::~Array2D(){
 
 ostream& operator<< (ostream& os, const Array2D& arr){
 	int i, j;
+	int padding_size = 0;
+	int ref_size = arr.m_size * arr.m_size;
+	while(ref_size != 0){
+		padding_size += 1;
+		ref_size = ref_size / 10;
+	}
 	for(i=0; i<arr.m_size; i++){
 		for(j=0; j<arr.m_size; j++){
-			os << arr.m_array[i][j];
+			os << setw(padding_size) << arr.m_array[i][j];
 			if(j != arr.m_size){
 				os << ' ';
 			}
