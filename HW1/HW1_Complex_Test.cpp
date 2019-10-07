@@ -30,16 +30,20 @@ Complex<T> Complex<T>::operator*(const Complex& arg){
 
 template <class T>
 Complex<T> Complex<T>::operator~() const {
-	return Complex(re, (T)(-1 * im));
+	if(im == (T)0){	//Prevent eps value inversion
+		return Complex(re, im);
+	}else{
+		return Complex(re, (T)((T)-1 * im));
+	}
 }
 
 template <class U>
 ostream& operator<< (ostream& os, const Complex<U>& cplx){
 	os << '(' << cplx.re;
-	if(cplx.im >= 0){
+	if(cplx.im >= (U)(0)){
 		os << " + " << cplx.im;
 	}else{
-		os << " - " << (U)(-1 * cplx.im);
+		os << " - " << (U)(-1) * cplx.im;
 	}
 	os << "i)" << endl;
 	return os;
