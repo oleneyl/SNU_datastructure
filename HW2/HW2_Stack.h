@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+// Dose getSize() method is in Time complexity O(N)?
+
 /* --- DO NOT MODIFY --- */
 template <class T>
 class Stack {
@@ -50,42 +52,72 @@ public:
 
 template <class T>
 Stack<T>::Stack() {
-	// TODO
+	top = nullptr;
 }
 
 template <class T>
 Stack<T>::~Stack() {
-	// TODO
+	Node* temp;
+	while (top != nullptr) {
+		temp = top;
+		top = top->getNext();
+		delete temp;
+	}
 }
 
 template <class T>
 bool Stack<T>::isEmpty() const {
-	// TODO
+	return (top == nullptr);
 }
 
 template <class T>
 T Stack<T>::getTop() const {
-	// TODO
+	if (top == nullptr) {
+		return T();
+	}else{
+		return top->getData();
+	}
 }
 
 template <class T>
 int Stack<T>::getSize() const {
-	// TODO
+	int size = 0;
+	Node* temp = top;
+	while (temp != nullptr) {
+		size += 1;
+		temp = top->getNext();
+	}
+	return size;
 }
 
 template <class T>
 void Stack<T>::push(const T& newData) {
-	// TODO
+	Node* node = new Node(newData, top);
+	top = node;
 }
 
 template <class T>
 T Stack<T>::pop() {
-	// TODO
+	T value = top->getData();
+	Node* temp = top;
+	top = top->getNext();
+	delete temp;
+	return value;
 }
 
 template <class T>
 void Stack<T>::print() const {
-	// TODO
+	cout << "[";
+	Node* temp = top;
+	while (temp != nullptr) {
+		cout << temp->getData();
+		if (temp->getNext() != nullptr) {
+			cout << ", ";
+		}
+		temp = temp->getNext();
+	}
+	cout << "]" << endl;
+	return;
 }
 
 #endif
