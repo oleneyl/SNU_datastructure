@@ -3,6 +3,7 @@
 int main() {
 	Array2D a(5);
 
+
 	cout << "<Original Matrix>" << endl;
 	cout << a << endl;
 

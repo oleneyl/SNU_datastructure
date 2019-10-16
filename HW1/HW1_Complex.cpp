@@ -66,6 +66,6 @@ void solveQuadratic(Complex<double>& x1, Complex<double>& x2, int a, int b, int 
 		x2 = Complex<double>(firstArg, 0.0);
 	}else{
 		x1 = Complex<double>(firstArg, secondArg);
-		x2 = Complex<double>(firstArg, secondArg * -1);
+		x2 = Complex<double>(firstArg, secondArg * -1.0);
 	}
 }
