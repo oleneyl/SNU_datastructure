@@ -1,4 +1,5 @@
 .vscode
-HW1/.vs/
-HW1/Debug/
-**/vcxproj.**
+**/.vs/
+**/Debug/
+**/*vcxproj*
+**/*.sln
