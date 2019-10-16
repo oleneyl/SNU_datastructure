@@ -54,6 +54,9 @@ void Array2D::MoveRight(int r, int dist){
 		exact_dist += m_size;
 	}
 	int contract_dist;
+	if (exact_dist == 0) {
+		return;
+	}
 	while(second != (first + 2 * exact_dist)){
 		if(first + exact_dist < second - exact_dist){
 			for(j=0; j<exact_dist; j++){
@@ -87,6 +90,9 @@ void Array2D::MoveDown(int r, int dist){
 		exact_dist += m_size;
 	}
 	int contract_dist;
+	if (exact_dist == 0) {
+		return;
+	}
 	while(second != (first + 2 * exact_dist)){
 		if(first + exact_dist < second - exact_dist){
 			for(j=0; j<exact_dist; j++){
@@ -134,8 +140,9 @@ void Array2D::MoveUpRight(int d, int dist){
 	int first = 0;
 	int second = r_size;	
 
-	//cout << r_size << ' ' << exact_dist << ' ' << first << ' ' << second << ' ' << start_point_x << ' '<< start_point_y << endl;
-
+	if (exact_dist == 0) {
+		return;
+	}
 	while(second != (first + 2 * exact_dist)){
 		//cout << "Movement " << (first) << ' ' << (second-exact_dist) << endl;
 		if(first + exact_dist < second - exact_dist){
@@ -186,7 +193,9 @@ void Array2D::MoveDownRight(int d, int dist){
 	
 	int first = 0;
 	int second = r_size;	
-
+	if (exact_dist == 0) {
+		return;
+	}
 	while(second != (first + 2 * exact_dist)){
 		if(first + exact_dist < second - exact_dist){
 			for(j=0; j<exact_dist; j++){

@@ -55,7 +55,7 @@ void Rectangle::shift(int _x, int _y){
 ostream& Rectangle::print(ostream& os) const{
 	os << "Figure: rectangle" << '\n';
 	os << "Width: " << width << ", Height: " << height << " -> Area: " << area << '\n';
-	os << "The coordinate od diagonal line: ";
+	os << "The coordinate of diagonal line: ";
 	os << '('<< point[0] << ',' << point[1] << ')' << ", ";
 	os << '('<< point[2] << ',' << point[3] << ')' << '\n';
 	return os;
