@@ -23,7 +23,8 @@ public:
 	string getPostfixExp() const;
 	int calcTwoOperands(int operand1, int operand2, char op) const;
 	int calculate();
-	
+	int getPriority(char) const;
+	int comparePriority(char, char) const;
 };
 
 #endif
