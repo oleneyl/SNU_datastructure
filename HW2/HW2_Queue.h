@@ -29,16 +29,6 @@ public:
 };
 /* --- DO NOT MODIFY --- */
 
-// Custom function headers
-template <class T>
-void swap(T*, int, int);
-
-template <class T>
-void terminal_swap(T*, int, int, int);
-
-
-
-
 template <class T>
 Queue<T>::Queue(int c) {
 	array = new T[c];
@@ -49,7 +39,7 @@ Queue<T>::Queue(int c) {
 
 template <class T>
 Queue<T>::~Queue() {
-	delete array;
+	delete[] array;
 }
 
 template <class T>
@@ -92,7 +82,7 @@ void Queue<T>::push(const T& x) {
 		for (int i = 0; i < (capacity - 1); i++) {
 			another[i] = array[(front + i) % capacity];
 		}
-		delete array;
+		delete[] array;
 		array = another;
 		front = 0;
 		rear = capacity - 1;
@@ -131,21 +121,6 @@ void Queue<T>::print() const {
 		index %= capacity;
 	}
 	cout << "]" << endl;
-}
-
-// Function for swap
-template <class T>
-void swap(T* arr, int i, int j) {
-	T temp = arr[i];
-	arr[i] = arr[j];
-	arr[j] = temp;
-}
-
-template <class T>
-void terminal_swap(T* arr, int start, int end, int size) {
-	for (int i = 0; i < size; i++) {
-		swap(arr, start + i , end - size + i);
-	}
 }
 
 template <class T>
