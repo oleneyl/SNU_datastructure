@@ -1,44 +1,92 @@
 #include "HW3_HashTable.h"
 
-int main() {
+void insertWithLog(HashTable<int>* map, int key, int value) {
+	cout << "Insert Node (Key : " << key << ", Value : " << value << ")" << endl;
+	map->insertNode(key, value);
+}
 
-	HashTable<int> *map = new HashTable<int>(7);
+void deleteWithLog(HashTable<int>* map, int key) {
+	cout << "Delete Node (Key : " << key << ")" << endl;
+	map->deleteNode(key);
+}
 
-	cout << "Insert Node (Key : 1, Value : 10)" << endl;
-	map->insertNode(1, 10);
+void searchWithLog(HashTable<int>* map, int key) {
+	cout << "Search node that key is " << key << endl;
+	cout << "Value : " << map->search(key) << endl;
+}
 
-	cout << "Insert Node (Key : 11, Value : 11)" << endl;
-	map->insertNode(11, 11);
-
-	cout << "Insert Node (Key : 8, Value : 12), induce collision" << endl;
-	map->insertNode(8, 12);
-
+void current(HashTable<int>* map) {
 	cout << "<Current HashTable>" << endl;
 	map->display();
+}
 
-	cout << "Insert Node (Key : 21, Value : 13), need capacity doubling" << endl;
+void test_0() {
+	HashTable<int>* map = new HashTable<int>(7);
+	insertWithLog(map, 1, 10);
+	insertWithLog(map, 11, 11);
+	insertWithLog(map, 8, 12);
+
+	cout << "Induce collision";
+	insertWithLog(map, 8, 12);
+	current(map);
+
+
+	cout << "need capacity doubling" << endl;
+	insertWithLog(map, 21, 13);
 	map->insertNode(21, 13);
-	cout << "<Current HashTable>" << endl;
-	map->display();
+	current(map);
 
-	cout << "Delete Node (Key : 11)" << endl;
-	map->deleteNode(11);
-	cout << "<Current HashTable>" << endl;
-	map->display();
+	deleteWithLog(map, 11);
+	current(map);
 
-	cout << "Insert Node (Key : 11, Value : 20), key 11 is already existed, only update value" << endl;
-	map->insertNode(11, 20);
-	cout << "<Current HashTable>" << endl;
-	map->display();
+	map->insertNode(11, 13);
+	current(map);
 
-	cout << "Delete Node (Key : 27), but doesn't exist" << endl;
-	map->deleteNode(27);
-	cout << endl;
+	deleteWithLog(map, 27);
+	current(map);
 
-	cout << "Search node that key is 21" << endl;
-	cout << "Value : " << map->search(21) << endl;
-
+	searchWithLog(map, 21);
 	delete map;
+}
 
+void test_1() {
+	HashTable<int>* map = new HashTable<int>(7);
+	int i, j;
+	for (i = 0; i < 100; i++) {
+		map->insertNode(i, i * i);
+	}
+
+	for (i = 0; i < 15; i++) {
+		searchWithLog(map, 10 * i);
+	}
+
+	for (i = 0; i < 33; i++) {
+		deleteWithLog(map, i*3);
+	}
+
+	for (i = 0; i < 10; i++) {
+		searchWithLog(map, 10 * i);
+	}
+
+	for (i = 0; i < 33; i++) {
+		map->insertNode(i * 3, i * 300);
+	}
+
+	for (i = 0; i < 10; i++) {
+		searchWithLog(map, 10 * i);
+	}
+
+	for (i = 0; i < 100; i++) {
+		map->insertNode(i + 100, i * i);
+	}
+
+	for (i = 0; i < 21; i++) {
+		searchWithLog(map, 10 * i);
+	}
+}
+
+
+int main() {
+	test_1();
 	return 0;
 }
