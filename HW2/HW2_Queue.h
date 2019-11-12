@@ -78,7 +78,7 @@ int Queue<T>::getCapacity() const {
 template <class T>
 void Queue<T>::push(const T& x) {
 	if (getSize() == (capacity - 1)) {
-		T* another = new T[capacity * 2];
+		T* another = new T[(int)(2 * capacity)];
 		for (int i = 0; i < (capacity - 1); i++) {
 			another[i] = array[(front + i) % capacity];
 		}

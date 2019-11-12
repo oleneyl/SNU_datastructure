@@ -3,7 +3,7 @@
 void main() {
 
 	cout << "# Initialization" << endl;
-	Queue<int> a(5);
+	Queue<int> a(3);
 	cout << "Front : " << a.getFront() << endl;
 	cout << "Rear : " << a.getRear() << endl;
 	a.print();
@@ -18,6 +18,7 @@ void main() {
 	a.print();
 
 	cout << endl << "# Pop 4 times" << endl;
+
 	for (int i = 0; i < 4; i++) {
 		cout << "Pop : " << a.pop();
 		cout << " (" << a.getSize() << "/" << a.getCapacity() << ")" << endl;
