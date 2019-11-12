@@ -137,6 +137,9 @@ V HashTable<V>::search(int key) {
 	int iterHashKey;
 	for (int i = 0; i < capacity; i++) {
 		iterHashKey = (hashKey + i) % capacity;
+		if (table[iterHashKey] == nullptr || table[iterHashKey] == dummy) {
+			continue;
+		}
 		if (table[iterHashKey]->key == key) {
 			// Detected
 			return table[iterHashKey]->value;
