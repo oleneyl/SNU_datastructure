@@ -107,6 +107,10 @@ void TreeNode::print() {
 
 void BST::preorder() {
 	// TODO : Implement an preorder function of BST using protected preorder function
+	if (root == nullptr) {
+		cout << "Empty";
+		return;
+	}
 	preorder(root);
 }
 
@@ -123,6 +127,10 @@ void BST::preorder(TreeNode* curr_node) {
 
 void BST::postorder() {
 	// TODO : Implement an postorder function of BST using protected postorder function
+	if (root == nullptr) {
+		cout << "Empty";
+		return;
+	}
 	postorder(root);
 }
 
@@ -139,6 +147,10 @@ void BST::postorder(TreeNode* curr_node) {
 
 void BST::levelorder() {
 	// TODO : Implement an levelorder function of BST using protected levelorder function
+	if (root == nullptr) {
+		cout << "Empty";
+		return;
+	}
 	levelorder(root);
 }
 
