@@ -1,6 +1,6 @@
 #include "HW3_BST.h"
 
-int main() {
+void test_0() {
 	BST* dict = new BST();
 	dict->insert(4, 4.44);
 	dict->insert(3, 3.33);
@@ -37,4 +37,29 @@ int main() {
 
 	delete dict;
 	delete dict2;
+}
+
+int main() {
+	int i, j;
+	BST* dict = new BST();
+	for (i = 0; i < 100; i++) {
+		j = i * 49 % 100;
+		dict->insert(j, j * 0.01);
+	}
+	cout << "Preorder : \n"; dict->preorder(); cout << endl;
+	cout << "Postorder : \n"; dict->postorder(); cout << endl;
+	cout << "Levelorder : \n"; dict->levelorder(); cout << endl << endl;
+
+	BST* dict2 = new BST();
+	for (i = 50; i < 150; i++) {
+		dict2->insert(i, i * 0.0001);
+	}
+	cout << "Preorder : \n"; dict2->preorder(); cout << endl;
+	cout << "Postorder : \n"; dict2->postorder(); cout << endl;
+	cout << "Levelorder : \n"; dict2->levelorder(); cout << endl << endl;
+
+	dict->merge(*dict2);
+	cout << "Preorder : \n"; dict->preorder(); cout << endl;
+	cout << "Postorder : \n"; dict->postorder(); cout << endl;
+	cout << "Levelorder : \n"; dict->levelorder(); cout << endl << endl;
 }

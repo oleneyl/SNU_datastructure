@@ -2,8 +2,8 @@
 #include "HW3_AVL.h"
 using namespace std;
 
-int main() {
-	AVL *dict = new AVL();
+void test_0() {
+	AVL* dict = new AVL();
 	dict->insert(30, 3.3);
 	dict->insert(40, 4.4);
 	dict->insert(50, 5.5);
@@ -35,4 +35,22 @@ int main() {
 	dict->remove(20);
 	cout << dict->getHeight() << endl;
 	dict->levelorder(); cout << endl;
+}
+
+void test_2() {
+	AVL* dict = new AVL();
+	int i, j;
+	for (i = 0; i < 1000; i++) {
+		dict->insert(i, 0.0001 * i);
+	}
+
+	for (i = 0; i < 990; i++) {
+		dict->remove(i);
+	}
+	cout << dict->getHeight() << endl;
+	dict->levelorder(); cout << endl;
+}
+
+int main() {
+	test_0();
 }
